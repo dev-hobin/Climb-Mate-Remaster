@@ -1,0 +1,28 @@
+.logo {
+  margin: 0 10px;
+  min-width: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-image: url(../resource/icon/logo/logo-icon.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include mq($bp-phone) {
+    min-width: 7.5rem;
+    background-image: url(../resource/icon/logo/logo.png);
+  }
+
+  &__link {
+    display: block;
+  }
+  &__img-container {
+    width: 2.25rem;
+    height: 3rem;
+
+    @include mq($bp-phone) {
+      width: 7.5rem;
+      height: 3rem;
+    }
+  }
+}

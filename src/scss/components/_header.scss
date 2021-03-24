@@ -1,0 +1,35 @@
+.header {
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: $color-white;
+  border-bottom: 1px solid $color-light-gray;
+
+  &__inner {
+    max-width: $bp-phone;
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  @include mq($bp-phone) {
+    &__inner {
+      max-width: $bp-landscape-phone;
+    }
+  }
+
+  @include mq($bp-tablet) {
+    &__inner {
+      max-width: $bp-desktop;
+    }
+
+    &__logo {
+      width: 25%;
+    }
+    &__search {
+      width: 50%;
+    }
+    &__top-menu {
+      width: 25%;
+    }
+  }
+}
