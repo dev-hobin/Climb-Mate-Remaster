@@ -24,24 +24,59 @@
           <button class="icon-btn icon-btn-search search__search-btn"></button>
         </article>
 
-        <nav class="top-menu header__top-menu">
+        <nav class="top-menu header__top-menu" data-top-menu>
           <h2 class="visually-hidden">클라이메이트 메뉴</h2>
-          <button class="top-menu__toggle-btn">
+          <button class="top-menu__toggle-btn" data-toggle-btn>
             <figure class="top-menu__user-figure">
               <img src="assets/icon/user/user-default.png" alt="유저 기본 이미지" class="top-menu__user-img" />
             </figure>
             <div class="icon-btn icon-btn-bars top-menu__toggle-btn-icon"></div>
           </button>
-          <ul class="top-menu__list">
-            <li class="top-menu__item">회원가입</li>
-            <li class="top-menu__item">로그인</li>
-            <li class="top-menu__item">문의하기</li>
-            <li class="top-menu__item">마이페이지</li>
-            <li class="top-menu__item">팔로우</li>
-            <li class="top-menu__item">로그아웃</li>
+          <ul class="top-menu__list active" data-menu-list>
+            <li class="top-menu__item" data-menu-item="signUp"><button class="top-menu__btn">회원가입</button></li>
+            <li class="top-menu__item" data-menu-item="logIn"><button class="top-menu__btn">로그인</button></li>
+            <li class="top-menu__item" data-menu-item="question"><button class="top-menu__btn">문의하기</button></li>
+            <li class="top-menu__item" data-menu-item="mypage"><a href="#" class="top-menu__link">마이페이지</a></li>
+            <li class="top-menu__item" data-menu-item="follow"><a href="#" class="top-menu__link">팔로우</a></li>
+            <li class="top-menu__item" data-menu-item="logOut"><button class="top-menu__btn">로그아웃</button></li>
           </ul>
         </nav>
       </div>
     </header>
+    <main>
+      <div class="modal" data-modal>
+        <div class="modal__contents" data-contents="logIn">
+          <header class="modal__header">
+            <span class="modal__title">로그인</span>
+            <button class="icon-btn icon-btn-times modal__close-btn"></button>
+          </header>
+          <div class="modal__body">
+            <button class="kakao-btn modal__kakao-btn">
+              <img src="assets/icon/kakao/kakao-symbol.png" alt="카카오 심볼" class="kakao-btn__symbol-img" />
+              <span class="kakao-btn__text">카카오 로그인</span>
+            </button>
+            <div class="horizontal-line modal__line">
+              <div class="horizontal-line__line"></div>
+              <span class="horizontal-line__text">또는</span>
+            </div>
+            <div class="input-box modal__input-box">
+              <div class="icon icon-email input-box__icon"></div>
+              <input type="email" class="input-box__input" placeholder="이메일을 입력해주세요" />
+            </div>
+            <div class="input-box modal__input-box">
+              <div class="icon icon-password input-box__icon"></div>
+              <input type="password" class="input-box__input" placeholder="비밀번호를 입력해주세요" />
+            </div>
+            <div class="flex-end-container">
+              <button class="modal__secondary-btn">비밀번호 찾기</button>
+            </div>
+            <div class="flex-full-container">
+              <button class="modal__main-btn">로그인</button>
+            </div>
+          </div>
+          <footer class="modal__footer"></footer>
+        </div>
+      </div>
+    </main>
   </body>
 </html>

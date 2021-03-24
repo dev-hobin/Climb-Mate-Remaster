@@ -35,3 +35,43 @@
     transform: translate(-50%, -50%);
   }
 }
+.icon-btn-times {
+  position: relative;
+  padding-right: $font-size-default;
+  padding-bottom: $font-size-default;
+  &::after {
+    content: '\f00d';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.kakao-btn {
+  padding: 0.5rem 3rem;
+  background-color: $color-kakao-logo;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+
+  &__symbol-img {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  &__text {
+    flex: 1;
+    font-weight: 900;
+    color: $color-kakao-text;
+    font-size: $font-size-default;
+  }
+}

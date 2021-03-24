@@ -1,0 +1,21 @@
+.horizontal-line {
+  padding: 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__line {
+    width: 95%;
+    height: 1px;
+    border-top: 0.5px solid $color-light-gray;
+  }
+
+  &__text {
+    position: absolute;
+    text-align: center;
+    background-color: $color-white;
+    width: 15%;
+    font-weight: 700;
+  }
+}

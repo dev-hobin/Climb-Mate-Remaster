@@ -1,0 +1,84 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background-color: $color-transparent-black;
+  z-index: 100;
+
+  &__contents {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 320px;
+    max-height: 100vh;
+    background-color: $color-white;
+    padding: 0 1rem;
+    border-radius: $border-radius-rectangle;
+  }
+  &__header {
+    position: relative;
+    padding: 1rem 2.5rem;
+    text-align: center;
+    border: 1px solid transparent;
+    border-bottom: 1px solid $color-gray;
+  }
+  &__close-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: $font-size-medium;
+  }
+  &__body {
+    padding: 1rem 0;
+  }
+  &__footer {
+    padding: 1rem 0;
+    border: 1px solid transparent;
+    border-top: 1px solid $color-gray;
+  }
+  &__title {
+    font-size: $font-size-medium;
+    font-weight: 700;
+  }
+
+  &__main-btn {
+    width: 100%;
+    color: $color-white;
+    background-color: lighten($color-red, 5);
+    border-radius: $border-radius-rectangle;
+    font-weight: 700;
+    font-size: $font-size-default;
+    border: none;
+    padding: 0.5rem 0;
+  }
+  &__secondary-btn {
+    background-color: transparent;
+    color: $color-blue;
+    font-weight: 700;
+    font-size: $font-size-small;
+    border: none;
+    padding: 0;
+  }
+
+  &__kakao-btn {
+    width: 100%;
+    text-align: center;
+  }
+  &__line {
+    margin: 0.5rem 0;
+  }
+  &__input-box {
+    margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

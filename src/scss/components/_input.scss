@@ -1,0 +1,20 @@
+.input-box {
+  position: relative;
+  border: 2px solid $color-light-gray;
+  padding: 0.4rem 0.2rem;
+  display: flex;
+  align-items: center;
+
+  &__icon {
+    margin: 0 0.5rem 0 0.3rem;
+  }
+  &__input {
+    border: none;
+    flex: 1;
+    font-size: $font-size-default;
+    outline: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
