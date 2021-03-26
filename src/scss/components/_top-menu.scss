@@ -20,7 +20,6 @@
   }
   &__item {
     text-align: center;
-    cursor: pointer;
 
     &:hover {
       background-color: lighten($color-light-gray, 10);
@@ -34,6 +33,7 @@
     color: black;
     background-color: transparent;
     font-size: $font-size-default;
+    cursor: pointer;
   }
   &__link {
     display: block;
@@ -41,6 +41,7 @@
     color: black;
     text-decoration: none;
     font-size: $font-size-default;
+    cursor: pointer;
   }
 
   @include mq($bp-tablet) {
