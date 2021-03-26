@@ -74,4 +74,8 @@
     color: $color-kakao-text;
     font-size: $font-size-default;
   }
+
+  &:hover {
+    background-color: darken($color-kakao-logo, 5);
+  }
 }

@@ -5,7 +5,7 @@ const tag = '[HomeController]';
 
 const HomeController = class {
   constructor() {
-    this._topMenuView = new TopMenuView('s');
+    this._topMenuView = new TopMenuView('');
     this._modalView = new ModalView();
   }
 

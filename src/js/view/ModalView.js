@@ -3,10 +3,11 @@ import View from '../core/View';
 const tag = '[ModalView]';
 
 const ModalView = class extends View {
-  modalSort = {
+  _modalSort = {
     LOG_IN: 'logIn',
     SIGN_UP: 'signUp',
     QUESTION: 'question',
+    AGREEMENT: 'agreement',
   };
   constructor() {
     super();
@@ -16,7 +17,6 @@ const ModalView = class extends View {
 
   setup = element => {
     this.init(element);
-    console.log(tag, 'setup()');
     return this;
   };
   showModal = sort => {
@@ -33,12 +33,33 @@ const ModalView = class extends View {
 
   // 메서드
 
-  // 이벤트 바인딩
-  _bindEvents = () => {};
-
   // 모달 생성
   _makeModal = sort => {
-    console.log(sort, '모달 생성');
+    const modalEl = this._addModalElement();
+    let html;
+    switch (true) {
+      case sort === this._modalSort.LOG_IN:
+        html = this._getLogInHtml();
+        modalEl.innerHTML = html;
+        break;
+
+      case sort === this._modalSort.SIGN_UP:
+        html = this._getSignUpHtml();
+        modalEl.innerHTML = html;
+        break;
+
+      case sort === this._modalSort.QUESTION:
+        html = this._getQuestionHtml();
+        modalEl.innerHTML = html;
+        break;
+      case sort === this._modalSort.AGREEMENT:
+        html = this._getAgreementHtml();
+        modalEl.innerHTML = html;
+        break;
+
+      default:
+        throw `${tag} 모달 생성에 실패했습니다`;
+    }
   };
   // 모달 컨텐츠 변경
   _changeContents = sort => {
@@ -47,6 +68,147 @@ const ModalView = class extends View {
   // 배경 클릭 이벤트 설정
   _setBackgroundEvent = sort => {
     console.log(sort, '배경 클릭 이벤트');
+  };
+  // 이벤트 바인딩
+  _bindEvents = () => {};
+
+  // 모달 엘리먼트 추가
+  _addModalElement = () => {
+    // 모달 엘리먼트 생성
+    const modalEl = document.createElement('div');
+    modalEl.setAttribute('class', 'modal');
+    modalEl.setAttribute('data-modal', '');
+    // 모달 엘리먼트 <main> 태그 안에 추가
+    this._element.append(modalEl);
+    // 추가한 모달 엘리먼트 반환
+    return modalEl;
+  };
+  // 로그인 모달 html 생성
+  _getLogInHtml = () => {
+    return `<div class="modal__contents" data-contents="logIn">
+        <header class="modal__header">
+          <span class="modal__title">로그인</span>
+          <button class="icon-btn icon-btn-times modal__close-btn"></button>
+        </header>
+        <div class="modal__body">
+          <button class="kakao-btn modal__kakao-btn">
+            <img src="assets/icon/kakao/kakao-symbol.png" alt="카카오 심볼" class="kakao-btn__symbol-img" />
+            <span class="kakao-btn__text">카카오 로그인</span>
+          </button>
+          <div class="horizontal-line modal__line">
+            <div class="horizontal-line__line"></div>
+            <span class="horizontal-line__text">또는</span>
+          </div>
+          <div class="input-box modal__input-box">
+            <div class="icon icon-email input-box__icon"></div>
+            <input type="email" class="input-box__input" placeholder="이메일을 입력해주세요" />
+          </div>
+          <div class="input-box modal__input-box modal__input-box--has-content">
+            <div class="icon icon-password input-box__icon"></div>
+            <input type="password" class="input-box__input" placeholder="비밀번호를 입력해주세요" />
+          </div>
+          <div class="flex-end-container modal__btn-container">
+            <button class="modal__secondary-btn">비밀번호 찾기</button>
+          </div>
+          <div class="flex-full-container">
+            <button class="modal__main-btn">로그인</button>
+          </div>
+        </div>
+        <footer class="modal__footer">
+          <div class="flex-container">
+            <p class="modal__footer-text">Climb:Mate 계정이 없으신가요?</p>
+            <button class="modal__secondary-btn">회원가입</button>
+          </div>
+        </footer>
+      </div>`;
+  };
+  // 회원가입 모달 html 생성
+  _getSignUpHtml = () => {
+    return `<div class="modal__contents" data-contents="signUp">
+        <header class="modal__header">
+          <span class="modal__title">회원 가입</span>
+          <button class="icon-btn icon-btn-times modal__close-btn"></button>
+        </header>
+        <div class="modal__body">
+          <button class="kakao-btn modal__kakao-btn">
+            <img src="assets/icon/kakao/kakao-symbol.png" alt="카카오 심볼" class="kakao-btn__symbol-img" />
+            <span class="kakao-btn__text">카카오로 회원가입</span>
+          </button>
+          <div class="horizontal-line modal__line">
+            <div class="horizontal-line__line"></div>
+            <span class="horizontal-line__text">또는</span>
+          </div>
+          <div class="flex-full-container">
+            <button class="modal__main-btn">이메일로 회원가입</button>
+          </div>
+        </div>
+        <footer class="modal__footer">
+          <div class="flex-container">
+            <p class="modal__footer-text">이미 Climb:Mate 계정이 있나요?</p>
+            <button class="modal__secondary-btn">로그인</button>
+          </div>
+        </footer>
+      </div>`;
+  };
+  // 문의하기 모달 html 생성
+  _getQuestionHtml = () => {
+    return `<div class="modal__contents" data-contents="question">
+        <header class="modal__header">
+          <span class="modal__title">문의하기</span>
+          <button class="icon-btn icon-btn-times modal__close-btn"></button>
+        </header>
+        <div class="modal__body">
+          <div class="modal__content-title">문의 내용</div>
+          <textarea
+            class="modal__content-question-text-box"
+            placeholder="서비스 이용 중 궁금한 내용이나 불편한 사항 또는 추가되었으면 하는 기능 등, 문의할 내용을 자유롭게 적어주세요"
+          ></textarea>
+          <div class="modal__content-title">연락처</div>
+          <div class="input-box modal__input-box modal__input-box--has-content">
+            <div class="icon icon-phone input-box__icon"></div>
+            <input type="text" class="input-box__input" placeholder="답변받을 연락처를 입력해주세요" />
+          </div>
+          <div class="margin-bottom-container">
+            <p class="modal__content-sub-text">이메일, 휴대폰 번호 등 연락 받으실 연락처를 적어주세요.</p>
+            <p class="modal__content-sub-text modal__content-sub-text--red">
+              연락처를 적지 않을 시 답변을 받으실 수 없습니다.
+            </p>
+          </div>
+          <div class="flex-full-container">
+            <button class="modal__main-btn">문의하기</button>
+          </div>
+        </div>
+      </div>`;
+  };
+  // 약관동의 모달 html 생성
+  _getAgreementHtml = () => {
+    return `<div class="modal__contents" data-contents="agreement">
+        <header class="modal__header">
+          <span class="modal__title">문의하기</span>
+          <button class="icon-btn icon-btn-times modal__close-btn"></button>
+        </header>
+        <div class="modal__body">
+          <div class="modal__content-title">문의 내용</div>
+          <textarea
+            class="modal__content-question-text-box"
+            placeholder="서비스 이용 중 궁금한 내용이나 불편한 사항 또는 추가되었으면 하는 기능 등, 문의할 내용을 자유롭게 적어주세요"
+          ></textarea>
+          <div class="modal__content-title">연락처</div>
+          <div class="input-box modal__input-box modal__input-box--has-content">
+            <div class="icon icon-phone input-box__icon"></div>
+            <input type="text" class="input-box__input" placeholder="답변받을 연락처를 입력해주세요" />
+          </div>
+          <div class="margin-bottom-container">
+            <p class="modal__content-sub-text">이메일, 휴대폰 번호 등 연락 받으실 연락처를 적어주세요.</p>
+            <p class="modal__content-sub-text modal__content-sub-text--red">
+              연락처를 적지 않을 시 답변을 받으실 수 없습니다.
+            </p>
+          </div>
+          <div class="flex-full-container">
+            <button class="modal__main-btn">문의하기</button>
+          </div>
+        </div>
+      </div>`;
   };
 };
 

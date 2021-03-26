@@ -20,12 +20,19 @@
     background-color: $color-white;
     padding: 0 1rem;
     border-radius: $border-radius-rectangle;
+    overflow-y: auto;
+
+    @include mq($bp-phone) {
+      max-width: 375px;
+    }
+    @include mq($bp-landscape-phone) {
+      max-width: 414px;
+    }
   }
   &__header {
     position: relative;
     padding: 1rem 2.5rem;
     text-align: center;
-    border: 1px solid transparent;
     border-bottom: 1px solid $color-gray;
   }
   &__close-btn {
@@ -40,23 +47,86 @@
   }
   &__footer {
     padding: 1rem 0;
-    border: 1px solid transparent;
     border-top: 1px solid $color-gray;
   }
   &__title {
     font-size: $font-size-medium;
     font-weight: 700;
   }
+  &__content-title {
+    font-size: $font-size-default;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  &__content-question-text-box {
+    font-size: $font-size-default;
+    line-height: 1.6;
+    width: 100%;
+    resize: none;
+    outline: none;
+    border: 2px solid $color-light-gray;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    height: 200px;
 
+    &:focus-within {
+      border-color: $color-gray;
+    }
+  }
+  &__content-sub-text {
+    font-size: $font-size-small;
+    color: $color-gray;
+    padding: 0.2rem 0;
+
+    &--red {
+      color: $color-red;
+    }
+  }
+  &__agreement-item {
+    border: 2px solid $color-light-gray;
+    &:last-child {
+      border-top: none;
+    }
+  }
+  &__agreement-label {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--left {
+      padding: 0;
+    }
+  }
+  &__agreement-text-icon {
+    color: $color-red;
+    padding-right: 0.5rem;
+    font-weight: 700;
+  }
+  &__agreement-text {
+    font-weight: 700;
+  }
+  &__agreement-link {
+    font-weight: 700;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   &__main-btn {
     width: 100%;
     color: $color-white;
-    background-color: lighten($color-red, 5);
+    background-color: $color-red;
     border-radius: $border-radius-rectangle;
     font-weight: 700;
     font-size: $font-size-default;
     border: none;
     padding: 0.5rem 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color-red, 5);
+    }
   }
   &__secondary-btn {
     background-color: transparent;
@@ -65,8 +135,12 @@
     font-size: $font-size-small;
     border: none;
     padding: 0;
-  }
+    cursor: pointer;
 
+    &:hover {
+      color: darken($color-blue, 10);
+    }
+  }
   &__kakao-btn {
     width: 100%;
     text-align: center;
@@ -75,10 +149,16 @@
     margin: 0.5rem 0;
   }
   &__input-box {
-    margin-bottom: 0.5rem;
-
-    &:last-child {
-      margin-bottom: 0;
+    margin-bottom: 1rem;
+    &--has-content {
+      margin-bottom: 0.5rem;
     }
+  }
+  &__btn-container {
+    margin-bottom: 0.5rem;
+  }
+  &__footer-text {
+    flex: 1;
+    font-size: $font-size-default;
   }
 }
