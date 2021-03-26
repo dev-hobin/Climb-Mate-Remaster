@@ -1,5 +1,6 @@
-import ModalView from '../view/ModalView';
 import TopMenuView from '../view/TopMenuView';
+import ModalView from '../view/ModalView';
+import AlertView from '../view/AlertView';
 
 const tag = '[HomeController]';
 
@@ -7,6 +8,7 @@ const HomeController = class {
   constructor() {
     this._topMenuView = new TopMenuView('');
     this._modalView = new ModalView();
+    this._alertView = new AlertView();
   }
 
   // 인터페이스
