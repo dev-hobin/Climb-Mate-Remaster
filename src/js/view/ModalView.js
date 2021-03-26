@@ -8,6 +8,7 @@ const ModalView = class extends View {
     SIGN_UP: 'signUp',
     QUESTION: 'question',
     AGREEMENT: 'agreement',
+    USER_REGISTER: 'user-register',
   };
   constructor() {
     super();
@@ -56,6 +57,10 @@ const ModalView = class extends View {
         html = this._getAgreementHtml();
         modalEl.innerHTML = html;
         break;
+      case sort === this._modalSort.USER_REGISTER:
+        html = this._getRegisterUserInfoHtml();
+        modalEl.innerHTML = html;
+        break;
 
       default:
         throw `${tag} 모달 생성에 실패했습니다`;
@@ -71,7 +76,6 @@ const ModalView = class extends View {
   };
   // 이벤트 바인딩
   _bindEvents = () => {};
-
   // 모달 엘리먼트 추가
   _addModalElement = () => {
     // 모달 엘리먼트 생성
@@ -83,6 +87,7 @@ const ModalView = class extends View {
     // 추가한 모달 엘리먼트 반환
     return modalEl;
   };
+
   // 로그인 모달 html 생성
   _getLogInHtml = () => {
     return `<div class="modal__contents" data-contents="logIn">
@@ -99,16 +104,18 @@ const ModalView = class extends View {
             <div class="horizontal-line__line"></div>
             <span class="horizontal-line__text">또는</span>
           </div>
-          <div class="input-box modal__input-box">
-            <div class="icon icon-email input-box__icon"></div>
-            <input type="email" class="input-box__input" placeholder="이메일을 입력해주세요" />
+          <div class="margin-bottom-container">
+            <div class="input-box">
+              <div class="icon icon-email input-box__icon"></div>
+              <input type="email" class="input-box__input" placeholder="이메일을 입력해주세요" />
+            </div>
           </div>
-          <div class="input-box modal__input-box modal__input-box--has-content">
+          <div class="input-box modal__input-box--has-content">
             <div class="icon icon-password input-box__icon"></div>
             <input type="password" class="input-box__input" placeholder="비밀번호를 입력해주세요" />
           </div>
           <div class="flex-end-container modal__btn-container">
-            <button class="modal__secondary-btn">비밀번호 찾기</button>
+            <button class="modal__sub-btn">비밀번호 찾기</button>
           </div>
           <div class="flex-full-container">
             <button class="modal__main-btn">로그인</button>
@@ -117,7 +124,7 @@ const ModalView = class extends View {
         <footer class="modal__footer">
           <div class="flex-container">
             <p class="modal__footer-text">Climb:Mate 계정이 없으신가요?</p>
-            <button class="modal__secondary-btn">회원가입</button>
+            <button class="modal__sub-btn">회원가입</button>
           </div>
         </footer>
       </div>`;
@@ -145,7 +152,7 @@ const ModalView = class extends View {
         <footer class="modal__footer">
           <div class="flex-container">
             <p class="modal__footer-text">이미 Climb:Mate 계정이 있나요?</p>
-            <button class="modal__secondary-btn">로그인</button>
+            <button class="modal__sub-btn">로그인</button>
           </div>
         </footer>
       </div>`;
@@ -184,28 +191,103 @@ const ModalView = class extends View {
   _getAgreementHtml = () => {
     return `<div class="modal__contents" data-contents="agreement">
         <header class="modal__header">
-          <span class="modal__title">문의하기</span>
+          <span class="modal__title">회원가입</span>
           <button class="icon-btn icon-btn-times modal__close-btn"></button>
         </header>
         <div class="modal__body">
-          <div class="modal__content-title">문의 내용</div>
-          <textarea
-            class="modal__content-question-text-box"
-            placeholder="서비스 이용 중 궁금한 내용이나 불편한 사항 또는 추가되었으면 하는 기능 등, 문의할 내용을 자유롭게 적어주세요"
-          ></textarea>
-          <div class="modal__content-title">연락처</div>
-          <div class="input-box modal__input-box modal__input-box--has-content">
-            <div class="icon icon-phone input-box__icon"></div>
-            <input type="text" class="input-box__input" placeholder="답변받을 연락처를 입력해주세요" />
-          </div>
-          <div class="margin-bottom-container">
-            <p class="modal__content-sub-text">이메일, 휴대폰 번호 등 연락 받으실 연락처를 적어주세요.</p>
-            <p class="modal__content-sub-text modal__content-sub-text--red">
-              연락처를 적지 않을 시 답변을 받으실 수 없습니다.
-            </p>
+          <ol class="modal__agreement-list modal__block-container">
+            <li class="modal__agreement-item">
+              <label for="agreement-private" class="modal__agreement-label">
+                <div class="flex-container">
+                  <span class="modal__agreement-text-icon">[필수]</span>
+                  <a href="#" class="modal__agreement-link" target="_blank">개인정보 수집 및 이용 동의</a>
+                </div>
+                <div class="flex-center-container">
+                  <input
+                    type="checkbox"
+                    id="agreement-private"
+                    name="agreement"
+                    value="private"
+                    class="checkbox-input"
+                  />
+                  <span class="checkbox-icon"></span>
+                </div>
+              </label>
+            </li>
+            <li class="modal__agreement-item">
+              <label for="agreement-use" class="modal__agreement-label">
+                <div class="flex-container">
+                  <span class="modal__agreement-text-icon">[필수]</span>
+                  <a href="#" class="modal__agreement-link" target="_blank">이용 약관 동의</a>
+                </div>
+                <div class="flex-center-container">
+                  <input type="checkbox" id="agreement-use" name="agreement" value="use" class="checkbox-input" />
+                  <span class="checkbox-icon"></span>
+                </div>
+              </label>
+            </li>
+          </ol>
+          <div class="flex-end-container margin-container">
+            <label for="agreement-all" class="modal__agreement-label modal__agreement-label--left">
+              <div class="flex-center-container">
+                <input type="checkbox" id="agreement-all" name="agreement" value="all" class="checkbox-input" />
+                <span class="checkbox-icon checkbox-icon--left"></span>
+              </div>
+              <div class="flex-container">
+                <span class="modal__agreement-text">모두 동의</span>
+              </div>
+            </label>
           </div>
           <div class="flex-full-container">
-            <button class="modal__main-btn">문의하기</button>
+            <button class="modal__main-btn">다음</button>
+          </div>
+        </div>
+      </div>`;
+  };
+  // 회원 정보 등록 모달 html 생성
+  _getRegisterUserInfoHtml = () => {
+    return `<div class="modal__contents" data-contents="user-register">
+        <header class="modal__header">
+          <span class="modal__title">회원정보 등록</span>
+          <button class="icon-btn icon-btn-times modal__close-btn"></button>
+        </header>
+        <div class="modal__body">
+          <div class="margin-bottom-container">
+            <div class="flex-container">
+              <div class="input-box modal__input-box modal__input-box--has-sibling-btn">
+                <div class="icon icon-email input-box__icon"></div>
+                <input type="email" class="input-box__input" placeholder="이메일 주소" />
+              </div>
+              <button class="modal__secondary-btn modal__send-email-btn">인증메일 전송</button>
+            </div>
+            <div class="modal__info-text modal__info-text--error">이메일 형식이 올바르지 않습니다</div>
+          </div>
+          <div class="margin-bottom-container">
+            <div class="input-box modal__input-box disabled">
+              <div class="icon icon-check-square input-box__icon"></div>
+              <input type="text" class="input-box__input" placeholder="인증번호" disabled />
+            </div>
+          </div>
+          <div class="margin-bottom-container">
+            <div class="input-box modal__input-box">
+              <div class="icon icon-user input-box__icon"></div>
+              <input type="text" class="input-box__input" placeholder="닉네임" />
+            </div>
+          </div>
+          <div class="margin-bottom-container">
+            <div class="input-box modal__input-box">
+              <div class="icon icon-password input-box__icon"></div>
+              <input type="password" class="input-box__input" placeholder="비밀번호" />
+            </div>
+          </div>
+          <div class="margin-bottom-container">
+            <div class="input-box modal__input-box">
+              <div class="icon icon-password input-box__icon"></div>
+              <input type="password" class="input-box__input" placeholder="비밀번호 확인" />
+            </div>
+          </div>
+          <div class="flex-full-container">
+            <button class="modal__main-btn">회원가입</button>
           </div>
         </div>
       </div>`;

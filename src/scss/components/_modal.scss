@@ -34,6 +34,11 @@
     padding: 1rem 2.5rem;
     text-align: center;
     border-bottom: 1px solid $color-gray;
+
+    &--empty {
+      padding: 0;
+      border: none;
+    }
   }
   &__close-btn {
     position: absolute;
@@ -105,6 +110,7 @@
   }
   &__agreement-text {
     font-weight: 700;
+    cursor: pointer;
   }
   &__agreement-link {
     font-weight: 700;
@@ -129,6 +135,21 @@
     }
   }
   &__secondary-btn {
+    width: 100%;
+    color: $color-white;
+    background-color: $color-blue;
+    border-radius: $border-radius-rectangle;
+    font-weight: 700;
+    font-size: $font-size-default;
+    border: none;
+    padding: 0.5rem 0;
+    cursor: pointer;
+
+    &:hover {
+      background-color: darken($color-blue, 5);
+    }
+  }
+  &__sub-btn {
     background-color: transparent;
     color: $color-blue;
     font-weight: 700;
@@ -149,9 +170,28 @@
     margin: 0.5rem 0;
   }
   &__input-box {
-    margin-bottom: 1rem;
     &--has-content {
       margin-bottom: 0.5rem;
+    }
+    &--has-sibling-btn {
+      margin-bottom: 0;
+      flex: 1;
+    }
+  }
+  &__send-email-btn {
+    margin-left: 0.5rem;
+    width: fit-content;
+    padding: 0.5rem;
+  }
+  &__info-text {
+    font-size: $font-size-small;
+    padding-top: 0.5rem;
+
+    &--error {
+      color: $color-red;
+    }
+    &--success {
+      color: $color-success;
     }
   }
   &__btn-container {

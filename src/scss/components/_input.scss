@@ -4,9 +4,14 @@
   padding: 0.4rem 0.2rem;
   display: flex;
   align-items: center;
+  min-width: 60px;
 
   &:focus-within {
     border-color: $color-gray;
+  }
+
+  &.disabled {
+    background-color: lighten($color-light-gray, 10);
   }
 
   &__icon {
@@ -14,6 +19,7 @@
   }
   &__input {
     border: none;
+    background-color: transparent;
     flex: 1;
     font-size: $font-size-default;
     outline: none;
@@ -44,6 +50,7 @@
   border: 1px solid $color-light-gray;
   border-radius: $border-radius-rectangle;
   transition: background 100ms ease;
+  cursor: pointer;
 
   &::after {
     content: '';
