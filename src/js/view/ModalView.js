@@ -10,12 +10,12 @@ const ModalView = class extends View {
     AGREEMENT: 'agreement',
     USER_REGISTER: 'user-register',
   };
+
   constructor() {
     super();
   }
 
   // 인터페이스
-
   setup = element => {
     this.init(element);
     return this;
@@ -338,7 +338,15 @@ const ModalView = class extends View {
       const email = emailInput.value;
       const password = passwordInput.value;
       // 입력한 이메일, 비밀번호로 로그인 요청
-      this.emit('@logIn', { email, password });
+      this.emit('@emailLogIn', { email, password });
+    });
+    passwordInput.addEventListener('keyup', event => {
+      if (event.key !== 'Enter') return;
+      // 엔터를 눌렀을 경우
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      // 입력한 이메일, 비밀번호로 로그인 요청
+      this.emit('@emailLogIn', { email, password });
     });
     temporalPasswordModalBtn.addEventListener('click', () => console.log('임시 비밀번호 모달 띄우기'));
     signUpModalBtn.addEventListener('click', () => console.log('회원가입 모달 띄우기'));
@@ -346,7 +354,7 @@ const ModalView = class extends View {
       const email = emailInput.value;
       const password = passwordInput.value;
       // 입력한 이메일, 비밀번호로 로그인 요청
-      this.emit('@logIn', { email, password });
+      this.emit('@emailLogIn', { email, password });
     });
   };
   // 회원가입 모달 이벤트 등록

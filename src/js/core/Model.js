@@ -5,10 +5,10 @@ const Model = class {
     this._resStatus = null;
   }
 
-  HOSTS = {
+  _hosts = {
     SERVER: 'https://climbmate.co.kr',
   };
-  PATHS = {
+  _paths = {
     SERVER_MAIN: '/indexTest1.php',
   };
 
