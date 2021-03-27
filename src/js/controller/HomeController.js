@@ -21,7 +21,8 @@ const HomeController = class {
   init = () => {
     this._modalView //
       .setup(document.querySelector('main'))
-      .on('@emailLogIn', event => this._emailLogIn(event.detail.email, event.detail.password));
+      .on('@emailLogIn', event => this._emailLogIn(event.detail.email, event.detail.password))
+      .on('@question', event => this._sendQuestion(event.detail.question, event.detail.callInfo));
 
     this._topMenuView //
       .setup(document.querySelector('[data-top-menu]'))
@@ -38,6 +39,25 @@ const HomeController = class {
     // 상단 메뉴 설정
     this._setTopMenu(isLogged);
   };
+
+  // 이메일로 로그인
+  _emailLogIn = async (email, password) => {
+    const response = await this._userModel.emailLogIn(email, password);
+    if (!response) return;
+
+    const { isSuccess, body, message, errorCode = null } = response;
+    // 로그인 성공했다면 새로 고침
+    if (isSuccess) location.reload();
+    else {
+      if (errorCode === this._userModel.errorCode.EMAIL_IS_EMPTY)
+        return this._alertView.showErrorAlert('로그인 실패', message);
+      if (errorCode === this._userModel.errorCode.PASSWORD_IS_EMPTY)
+        return this._alertView.showErrorAlert('로그인 실패', message);
+      this._alertView.showErrorAlert('로그인 실패', message);
+    }
+  };
+  // 문의하기
+  _sendQuestion = async (question, callInfo) => {};
 
   // 상단 메뉴 세팅
   _setTopMenu = async isLogged => {
@@ -56,24 +76,6 @@ const HomeController = class {
   _onTopMenuClick = menuName => {
     if (menuName === 'logOut') return this._userModel.logOut();
     this._modalView.showModal(menuName);
-  };
-  // 이메일로 로그인
-  _emailLogIn = async (email, password) => {
-    const response = await this._userModel.emailLogIn(email, password);
-    if (!response) return;
-
-    const { isSuccess, body, message, errorCode = null } = response;
-    // 로그인 성공했다면 새로 고침
-    if (isSuccess) {
-      // location.reload();
-      console.log(body);
-    } else {
-      if (errorCode === this._userModel.errorCode.EMAIL_IS_EMPTY)
-        return this._alertView.showErrorAlert('로그인 실패', message);
-      if (errorCode === this._userModel.errorCode.PASSWORD_IS_EMPTY)
-        return this._alertView.showErrorAlert('로그인 실패', message);
-      this._alertView.showErrorAlert('로그인 실패', message);
-    }
   };
 };
 

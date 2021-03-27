@@ -9,6 +9,7 @@ const ModalView = class extends View {
     QUESTION: 'question',
     AGREEMENT: 'agreement',
     USER_REGISTER: 'user-register',
+    TEMPORAL_PASSWORD: 'temporal-password',
   };
 
   constructor() {
@@ -30,9 +31,6 @@ const ModalView = class extends View {
       this._makeModal(sort);
       this._bindEvents(sort);
     }
-    // todo: 배경 클릭 이벤트 나중에 하자
-    // 모달 종류에 따라 배경 클릭 이벤트 설정 (배경 눌렀을 때 모달 닫히게 할건지 안할건지)
-    // this._setBackgroundEvent(sort, this._element.querySelector('[data-modal]'));
   };
 
   // 메서드
@@ -71,12 +69,37 @@ const ModalView = class extends View {
   };
   // 모달 컨텐츠 변경
   _changeContents = sort => {
-    console.log(sort, '모달 컨텐츠 변경');
+    const modalEl = this._element.querySelector('[data-modal]');
+    let html;
+    switch (true) {
+      case sort === this._modalSort.LOG_IN:
+        html = this._getLogInHtml();
+        modalEl.innerHTML = html;
+        break;
+
+      case sort === this._modalSort.SIGN_UP:
+        html = this._getSignUpHtml();
+        modalEl.innerHTML = html;
+        break;
+
+      case sort === this._modalSort.QUESTION:
+        html = this._getQuestionHtml();
+        modalEl.innerHTML = html;
+        break;
+      case sort === this._modalSort.AGREEMENT:
+        html = this._getAgreementHtml();
+        modalEl.innerHTML = html;
+        break;
+      case sort === this._modalSort.USER_REGISTER:
+        html = this._getRegisterUserInfoHtml();
+        modalEl.innerHTML = html;
+        break;
+
+      default:
+        throw `${tag} 모달 생성에 실패했습니다`;
+    }
   };
 
-  // todo: 배경 클릭 이벤트 나중에 하자
-  // 배경 클릭 이벤트 설정
-  // _setBackgroundEvent = (sort, modalEl) => {};
   // 이벤트 바인딩
   _bindEvents = sort => {
     switch (true) {
@@ -159,10 +182,10 @@ const ModalView = class extends View {
     return `<div class="modal__contents" data-contents="signUp">
         <header class="modal__header" data-header>
           <span class="modal__title">회원 가입</span>
-          <button class="icon-btn icon-btn-times modal__close-btn"></button>
+          <button class="icon-btn icon-btn-times modal__close-btn" data-close-btn></button>
         </header>
         <div class="modal__body">
-          <button class="kakao-btn modal__kakao-btn">
+          <button class="kakao-btn modal__kakao-btn" data-kakao-btn>
             <img src="assets/icon/kakao/kakao-symbol.png" alt="카카오 심볼" class="kakao-btn__symbol-img" />
             <span class="kakao-btn__text">카카오로 회원가입</span>
           </button>
@@ -171,13 +194,13 @@ const ModalView = class extends View {
             <span class="horizontal-line__text">또는</span>
           </div>
           <div class="flex-full-container">
-            <button class="modal__main-btn">이메일로 회원가입</button>
+            <button class="modal__main-btn" data-main-btn="signUp">이메일로 회원가입</button>
           </div>
         </div>
         <footer class="modal__footer">
           <div class="flex-container">
             <p class="modal__footer-text">이미 Climb:Mate 계정이 있나요?</p>
-            <button class="modal__sub-btn">로그인</button>
+            <button class="modal__sub-btn" data-sub-btn="logIn">로그인</button>
           </div>
         </footer>
       </div>`;
@@ -187,18 +210,19 @@ const ModalView = class extends View {
     return `<div class="modal__contents" data-contents="question">
         <header class="modal__header" data-header>
           <span class="modal__title">문의하기</span>
-          <button class="icon-btn icon-btn-times modal__close-btn"></button>
+          <button class="icon-btn icon-btn-times modal__close-btn" data-close-btn></button>
         </header>
         <div class="modal__body">
           <div class="modal__content-title">문의 내용</div>
           <textarea
             class="modal__content-question-text-box"
             placeholder="서비스 이용 중 궁금한 내용이나 불편한 사항 또는 추가되었으면 하는 기능 등, 문의할 내용을 자유롭게 적어주세요"
+            data-textarea="question"
           ></textarea>
           <div class="modal__content-title">연락처</div>
           <div class="input-box modal__input-box modal__input-box--has-content">
             <div class="icon icon-phone input-box__icon"></div>
-            <input type="text" class="input-box__input" placeholder="답변받을 연락처를 입력해주세요" />
+            <input type="text" class="input-box__input" placeholder="답변받을 연락처를 입력해주세요" data-input="call" />
           </div>
           <div class="margin-bottom-container">
             <p class="modal__content-sub-text">이메일, 휴대폰 번호 등 연락 받으실 연락처를 적어주세요.</p>
@@ -207,7 +231,7 @@ const ModalView = class extends View {
             </p>
           </div>
           <div class="flex-full-container">
-            <button class="modal__main-btn">문의하기</button>
+            <button class="modal__main-btn" data-main-btn="question">문의하기</button>
           </div>
         </div>
       </div>`;
@@ -349,7 +373,7 @@ const ModalView = class extends View {
       this.emit('@emailLogIn', { email, password });
     });
     temporalPasswordModalBtn.addEventListener('click', () => console.log('임시 비밀번호 모달 띄우기'));
-    signUpModalBtn.addEventListener('click', () => console.log('회원가입 모달 띄우기'));
+    signUpModalBtn.addEventListener('click', () => this.showModal(this._modalSort.SIGN_UP));
     logInBtn.addEventListener('click', () => {
       const email = emailInput.value;
       const password = passwordInput.value;
@@ -358,9 +382,38 @@ const ModalView = class extends View {
     });
   };
   // 회원가입 모달 이벤트 등록
-  _bindSignUpEvents = () => {};
+  _bindSignUpEvents = () => {
+    const contents = document.querySelector('[data-contents="signUp"]');
+
+    const closeBtn = contents.querySelector('[data-close-btn]');
+    const kakaoSignUpBtn = contents.querySelector('[data-kakao-btn]');
+    const signUpBtn = contents.querySelector('[data-main-btn="signUp"]');
+    const logInModalBtn = contents.querySelector('[data-sub-btn="logIn"]');
+
+    closeBtn.addEventListener('click', this._removeModal);
+    kakaoSignUpBtn.addEventListener('click', () => console.log('카카오 회원가입 버튼 클릭'));
+    signUpBtn.addEventListener('click', () => this.showModal(this._modalSort.USER_REGISTER));
+    logInModalBtn.addEventListener('click', () => this.showModal(this._modalSort.LOG_IN));
+  };
   // 문의하기 모달 이벤트 등록
-  _bindQuestionEvents = () => {};
+  _bindQuestionEvents = () => {
+    const contents = document.querySelector('[data-contents="question"]');
+
+    const closeBtn = contents.querySelector('[data-close-btn]');
+    const questionTextArea = contents.querySelector('[data-textarea="question"]');
+    const callInput = contents.querySelector('[data-input="call"]');
+    const questionBtn = contents.querySelector('[data-main-btn="question"]');
+
+    closeBtn.addEventListener('click', this._removeModal);
+    questionTextArea.addEventListener('change', () => console.log('텍스트 입력중'));
+    callInput.addEventListener('change', () => console.log('연락처 입력중'));
+    questionBtn.addEventListener('click', () => {
+      const question = questionTextArea.value.trim();
+      const callInfo = callInput.value.trim();
+      // 문의 요청
+      this.emit('@question', { question, callInfo });
+    });
+  };
   // 약관 동의 모달 이벤트 등록
   _bindAgreementEvents = () => {};
   // 회원정보 등록 모달 이벤트 등록
