@@ -1,0 +1,37 @@
+.main {
+  width: 100%;
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+
+  &__inner {
+    flex: 1;
+    width: 100%;
+    max-width: $bp-phone;
+    margin: auto;
+  }
+
+  @include mq($bp-phone) {
+    &__inner {
+      max-width: $bp-landscape-phone;
+    }
+  }
+
+  @include mq($bp-tablet) {
+    &__inner {
+      max-width: $bp-desktop;
+    }
+  }
+
+  @include mq($bp-desktop) {
+    &__inner {
+      max-width: $bp-large-desktop;
+    }
+  }
+
+  @include mq($bp-large-desktop) {
+    &__inner {
+      max-width: $bp-larger-desktop;
+    }
+  }
+}
