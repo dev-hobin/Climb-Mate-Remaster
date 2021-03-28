@@ -27,8 +27,24 @@ const UserServiceModel = class extends Model {
       };
     this._isWorking = true;
 
-    // todo: 문의하기 api 작성먼저 시작하면 됨
-    const reqData = {};
+    const listQuestionUser = callInfo ? callInfo : '없음';
+    const reqData = {
+      reqCode: 400,
+      reqBody: {
+        listQuestionContents: question,
+        listQuestionUser,
+      },
+    };
+    console.log(reqData);
+
+    const { resBody, resCode, resErr } = await this.postRequest(this._hosts.SERVER, this._paths.SERVER_MAIN, reqData);
+    this._isWorking = false;
+
+    if (resCode == 200) return { isSuccess: true, body: {}, message: '' };
+    else {
+      console.log(tag, resErr);
+      return { isSuccess: false, body: {}, message: resErr };
+    }
   };
   // 유저 정보 가져오기
   getUserInfo = async () => {
@@ -64,4 +80,4 @@ const UserServiceModel = class extends Model {
   };
 };
 
-export default UserModel;
+export default UserServiceModel;

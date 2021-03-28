@@ -3,6 +3,7 @@ import ModalView from '../view/ModalView';
 import AlertView from '../view/AlertView';
 
 import UserModel from '../model/UserModel';
+import UserServiceModel from '../model/UserServiceModel';
 
 const tag = '[HomeController]';
 
@@ -13,6 +14,7 @@ const HomeController = class {
     this._alertView = new AlertView();
 
     this._userModel = new UserModel();
+    this._userServiceModel = new UserServiceModel();
   }
 
   // 인터페이스
@@ -50,14 +52,25 @@ const HomeController = class {
     if (isSuccess) location.reload();
     else {
       if (errorCode === this._userModel.errorCode.EMAIL_IS_EMPTY)
-        return this._alertView.showErrorAlert('로그인 실패', message);
+        return this._alertView.showCautionAlert('로그인 실패', message);
       if (errorCode === this._userModel.errorCode.PASSWORD_IS_EMPTY)
-        return this._alertView.showErrorAlert('로그인 실패', message);
+        return this._alertView.showCautionAlert('로그인 실패', message);
       this._alertView.showErrorAlert('로그인 실패', message);
     }
   };
   // 문의하기
-  _sendQuestion = async (question, callInfo) => {};
+  _sendQuestion = async (question, callInfo) => {
+    const response = await this._userServiceModel.sendQuestion(question, callInfo);
+    if (!response) return;
+
+    const { isSuccess, body, message, errorCode = null } = response;
+
+    if (isSuccess) console.log('문의하기 성공');
+    else {
+      if (errorCode === this._userServiceModel.errorCode.EMPTY_TEXT_AREA)
+        return this._alertView.showCautionAlert('문의 요청 실패', message);
+    }
+  };
 
   // 상단 메뉴 세팅
   _setTopMenu = async isLogged => {
