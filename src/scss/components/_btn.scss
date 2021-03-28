@@ -1,3 +1,14 @@
+.btn {
+  display: inline-block;
+  background-color: transparent;
+  border-radius: $border-radius-rectangle;
+  font-weight: 700;
+  font-size: $font-size-default;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
 .icon-btn {
   display: inline-block;
   border-radius: $border-radius-rectangle;

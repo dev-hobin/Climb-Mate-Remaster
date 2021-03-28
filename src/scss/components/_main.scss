@@ -3,17 +3,49 @@
   min-width: 320px;
   display: flex;
   flex-direction: column;
+  padding: 0 10px;
+
+  &--home {
+    background-image: url(../resource/img/banner/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
   &__inner {
     flex: 1;
     width: 100%;
     max-width: $bp-phone;
     margin: auto;
+
+    &--home {
+      display: flex;
+      flex-direction: column;
+
+      .main__top-container {
+        flex-direction: column;
+      }
+    }
   }
 
   @include mq($bp-phone) {
     &__inner {
       max-width: $bp-landscape-phone;
+    }
+  }
+
+  @include mq($bp-landscape-phone) {
+    &__inner {
+      max-width: $bp-tablet;
+
+      &--home {
+        .main__top-container {
+          flex-direction: row;
+          flex: 4;
+        }
+        .main__bottom-container {
+          flex: 1;
+        }
+      }
     }
   }
 
