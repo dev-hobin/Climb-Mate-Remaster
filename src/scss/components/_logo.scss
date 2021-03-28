@@ -26,3 +26,13 @@
     }
   }
 }
+
+.center-logo {
+  background-image: url(../resource/icon/logo/logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 80%;
+  height: 0;
+  padding-top: 32%;
+  margin: 0 auto;
+}

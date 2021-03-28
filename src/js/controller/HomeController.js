@@ -9,7 +9,7 @@ const tag = '[HomeController]';
 
 const HomeController = class {
   constructor() {
-    this._topMenuView = new TopMenuView('');
+    this._topMenuView = new TopMenuView();
     this._modalView = new ModalView();
     this._alertView = new AlertView();
 
@@ -65,10 +65,11 @@ const HomeController = class {
 
     const { isSuccess, body, message, errorCode = null } = response;
 
-    if (isSuccess) console.log('문의하기 성공');
+    if (isSuccess) this._modalView.showModal(this._modalView.modalSort.QUESTION_SUCCESS);
     else {
       if (errorCode === this._userServiceModel.errorCode.EMPTY_TEXT_AREA)
         return this._alertView.showCautionAlert('문의 요청 실패', message);
+      this._alertView.showErrorAlert('문의 요청 실패', message);
     }
   };
 

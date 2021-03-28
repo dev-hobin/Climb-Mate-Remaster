@@ -3,10 +3,11 @@ import View from '../core/View';
 const tag = '[ModalView]';
 
 const ModalView = class extends View {
-  _modalSort = {
+  modalSort = {
     LOG_IN: 'logIn',
     SIGN_UP: 'signUp',
     QUESTION: 'question',
+    QUESTION_SUCCESS: 'question-success',
     AGREEMENT: 'agreement',
     USER_REGISTER: 'user-register',
     TEMPORAL_PASSWORD: 'temporal-password',
@@ -40,25 +41,29 @@ const ModalView = class extends View {
     const modalEl = this._addModalElement();
     let html;
     switch (true) {
-      case sort === this._modalSort.LOG_IN:
+      case sort === this.modalSort.LOG_IN:
         html = this._getLogInHtml();
         modalEl.innerHTML = html;
         break;
 
-      case sort === this._modalSort.SIGN_UP:
+      case sort === this.modalSort.SIGN_UP:
         html = this._getSignUpHtml();
         modalEl.innerHTML = html;
         break;
 
-      case sort === this._modalSort.QUESTION:
+      case sort === this.modalSort.QUESTION:
         html = this._getQuestionHtml();
         modalEl.innerHTML = html;
         break;
-      case sort === this._modalSort.AGREEMENT:
+      case sort === this.modalSort.QUESTION_SUCCESS:
+        html = this._getQuestionSuccessHtml();
+        modalEl.innerHTML = html;
+        break;
+      case sort === this.modalSort.AGREEMENT:
         html = this._getAgreementHtml();
         modalEl.innerHTML = html;
         break;
-      case sort === this._modalSort.USER_REGISTER:
+      case sort === this.modalSort.USER_REGISTER:
         html = this._getRegisterUserInfoHtml();
         modalEl.innerHTML = html;
         break;
@@ -72,25 +77,29 @@ const ModalView = class extends View {
     const modalEl = this._element.querySelector('[data-modal]');
     let html;
     switch (true) {
-      case sort === this._modalSort.LOG_IN:
+      case sort === this.modalSort.LOG_IN:
         html = this._getLogInHtml();
         modalEl.innerHTML = html;
         break;
 
-      case sort === this._modalSort.SIGN_UP:
+      case sort === this.modalSort.SIGN_UP:
         html = this._getSignUpHtml();
         modalEl.innerHTML = html;
         break;
 
-      case sort === this._modalSort.QUESTION:
+      case sort === this.modalSort.QUESTION:
         html = this._getQuestionHtml();
         modalEl.innerHTML = html;
         break;
-      case sort === this._modalSort.AGREEMENT:
+      case sort === this.modalSort.QUESTION_SUCCESS:
+        html = this._getQuestionSuccessHtml();
+        modalEl.innerHTML = html;
+        break;
+      case sort === this.modalSort.AGREEMENT:
         html = this._getAgreementHtml();
         modalEl.innerHTML = html;
         break;
-      case sort === this._modalSort.USER_REGISTER:
+      case sort === this.modalSort.USER_REGISTER:
         html = this._getRegisterUserInfoHtml();
         modalEl.innerHTML = html;
         break;
@@ -103,21 +112,24 @@ const ModalView = class extends View {
   // 이벤트 바인딩
   _bindEvents = sort => {
     switch (true) {
-      case sort === this._modalSort.LOG_IN:
+      case sort === this.modalSort.LOG_IN:
         this._bindLogInEvents();
         break;
 
-      case sort === this._modalSort.SIGN_UP:
+      case sort === this.modalSort.SIGN_UP:
         this._bindSignUpEvents();
         break;
 
-      case sort === this._modalSort.QUESTION:
+      case sort === this.modalSort.QUESTION:
         this._bindQuestionEvents();
         break;
-      case sort === this._modalSort.AGREEMENT:
+      case sort === this.modalSort.QUESTION_SUCCESS:
+        this._bindQuestionSuccessEvents();
+        break;
+      case sort === this.modalSort.AGREEMENT:
         this._bindAgreementEvents();
         break;
-      case sort === this._modalSort.USER_REGISTER:
+      case sort === this.modalSort.USER_REGISTER:
         this._bindUserRegisterEvents();
         break;
       default:
@@ -232,6 +244,29 @@ const ModalView = class extends View {
           </div>
           <div class="flex-full-container">
             <button class="modal__main-btn" data-main-btn="question">문의하기</button>
+          </div>
+        </div>
+      </div>`;
+  };
+  // 문의하기 성공 모달 html 생성
+  _getQuestionSuccessHtml = () => {
+    return `<div class="modal__contents" data-contents="question-success">
+        <header class="modal__header" data-header>
+          <span class="modal__title">문의하기</span>
+          <button class="icon-btn icon-btn-times modal__close-btn" data-close-btn></button>
+        </header>
+        <div class="modal__body">
+          <div class="center-logo"></div>
+          <div class="modal__content-title modal__content-title--center-bold modal__under-logo">
+            문의가 접수되었습니다
+          </div>
+          <div class="margin-bottom-container">
+            <p class="modal__content-text modal__content-text--gray">
+              소중한 문의 감사합니다. 최대한 빠른 답변을 위해 노력하겠습니다.
+            </p>
+          </div>
+          <div class="flex-full-container">
+            <button class="modal__main-btn" data-main-btn="confirm">확인</button>
           </div>
         </div>
       </div>`;
@@ -373,7 +408,7 @@ const ModalView = class extends View {
       this.emit('@emailLogIn', { email, password });
     });
     temporalPasswordModalBtn.addEventListener('click', () => console.log('임시 비밀번호 모달 띄우기'));
-    signUpModalBtn.addEventListener('click', () => this.showModal(this._modalSort.SIGN_UP));
+    signUpModalBtn.addEventListener('click', () => this.showModal(this.modalSort.SIGN_UP));
     logInBtn.addEventListener('click', () => {
       const email = emailInput.value;
       const password = passwordInput.value;
@@ -392,8 +427,8 @@ const ModalView = class extends View {
 
     closeBtn.addEventListener('click', this._removeModal);
     kakaoSignUpBtn.addEventListener('click', () => console.log('카카오 회원가입 버튼 클릭'));
-    signUpBtn.addEventListener('click', () => this.showModal(this._modalSort.USER_REGISTER));
-    logInModalBtn.addEventListener('click', () => this.showModal(this._modalSort.LOG_IN));
+    signUpBtn.addEventListener('click', () => this.showModal(this.modalSort.USER_REGISTER));
+    logInModalBtn.addEventListener('click', () => this.showModal(this.modalSort.LOG_IN));
   };
   // 문의하기 모달 이벤트 등록
   _bindQuestionEvents = () => {
@@ -414,6 +449,8 @@ const ModalView = class extends View {
       this.emit('@question', { question, callInfo });
     });
   };
+  // 문의하기 성공 모달 이벤트 등록
+  _bindQuestionSuccessEvents = () => {};
   // 약관 동의 모달 이벤트 등록
   _bindAgreementEvents = () => {};
   // 회원정보 등록 모달 이벤트 등록
