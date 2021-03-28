@@ -1,0 +1,42 @@
+.footer {
+  width: 100%;
+  min-width: 320px;
+  padding: 1rem;
+  background-color: whitesmoke;
+
+  &__inner {
+    max-width: $bp-phone;
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  &__contents {
+    font-size: $font-size-default;
+    line-height: 1.2;
+  }
+
+  @include mq($bp-phone) {
+    &__inner {
+      max-width: $bp-landscape-phone;
+    }
+  }
+
+  @include mq($bp-tablet) {
+    &__inner {
+      max-width: $bp-desktop;
+    }
+  }
+
+  @include mq($bp-desktop) {
+    &__inner {
+      max-width: $bp-large-desktop;
+    }
+  }
+
+  @include mq($bp-large-desktop) {
+    &__inner {
+      max-width: $bp-larger-desktop;
+    }
+  }
+}
