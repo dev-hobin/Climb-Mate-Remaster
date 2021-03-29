@@ -238,9 +238,18 @@
 .kakao-map {
   flex: 1;
   display: none;
+  position: relative;
+
+  &__inner {
+    position: sticky;
+    top: 4rem;
+    height: calc(100vh - 4rem);
+    background-color: antiquewhite;
+  }
 
   @include mq($bp-large-desktop) {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 }
 
