@@ -1,0 +1,244 @@
+@import './settings/reset';
+@import './settings/mixin';
+@import './settings/variables';
+@import './settings/base';
+
+@import './components/icon';
+@import './components/btn';
+@import './components/line';
+@import './components/input';
+
+@import './components/header';
+@import './components/main';
+@import './components/footer';
+
+@import './components/modal';
+@import './components/alert-box';
+@import './components/logo';
+@import './components/search';
+@import './components/top-menu';
+
+.search-result {
+  flex: 1;
+  min-width: 320px;
+
+  &__inner {
+    height: 100%;
+    padding: 0 10px;
+    max-width: $bp-phone;
+    margin: auto;
+
+    display: flex;
+    flex-direction: column;
+
+    @include mq($bp-phone) {
+      max-width: $bp-landscape-phone;
+    }
+    @include mq($bp-tablet) {
+      max-width: none;
+    }
+  }
+}
+
+.search-info {
+  padding: 1rem 0;
+  text-align: center;
+
+  &__title {
+    font-size: $font-size-medium;
+  }
+  &__count-text {
+    padding: 0.5rem 0;
+  }
+
+  @include mq($bp-tablet) {
+    text-align: left;
+  }
+}
+
+.search-filter {
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+  &__item {
+    width: 100%;
+    margin-bottom: 0.5rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__btn {
+    padding: 0.5rem 1rem;
+    width: 100%;
+    background-color: $color-white;
+    border: 2px solid $color-gray;
+    border-radius: $border-radius-rectangle;
+    font-weight: 700;
+    color: $color-gray;
+  }
+
+  @include mq($bp-tablet) {
+    &__list {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+    &__item {
+      width: fit-content;
+      margin-bottom: 0;
+      margin-right: 0.5rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    &__btn {
+      width: fit-content;
+    }
+  }
+}
+
+.search-center-list {
+  margin: 1rem 0;
+
+  .search-center-item {
+    border-top: 1px solid $color-light-gray;
+    border-bottom: 1px solid transparent;
+    padding: 1rem 0;
+
+    &:last-child {
+      border-bottom: 1px solid $color-light-gray;
+    }
+
+    &__link {
+      display: flex;
+      flex-direction: column;
+    }
+    &__figure {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 66.66666%;
+      border-radius: $border-radius-rectangle;
+      overflow: hidden;
+    }
+    &__img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // 아이템 헤더
+    &__info-header {
+      position: relative;
+    }
+    &__center-name {
+      font-size: $font-size-medium;
+      font-weight: 900;
+      padding: 0.5rem 0;
+    }
+    &__center-address,
+    &__center-distance {
+      font-size: $font-size-small;
+      font-weight: 700;
+      color: $color-gray;
+      padding-bottom: 0.2rem;
+    }
+    &__map-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      color: $color-red;
+
+      padding-right: $font-size-medium;
+      padding-bottom: $font-size-medium;
+      font-size: $font-size-medium;
+    }
+    // 아이템 바디
+    &__info-body {
+      padding: 0.5rem 0;
+      line-height: 1.6;
+    }
+
+    // 아이템 푸터
+    &__info-footer {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      line-height: 1.6;
+    }
+    &__setting-date-title,
+    &__price-title {
+      font-size: $font-size-small;
+    }
+    &__setting-date,
+    &__price {
+      font-size: $font-size-medium;
+      padding-left: 0.5rem;
+    }
+
+    @include mq($bp-tablet) {
+      &__link {
+        flex-direction: row;
+      }
+      &__info-container {
+        flex: 1;
+        padding: 0 1rem;
+
+        display: flex;
+        flex-direction: column;
+
+        .search-center-item__info-body {
+          flex: 1;
+        }
+      }
+      &__figure {
+        position: relative;
+        width: 360px;
+        padding-top: 240px;
+      }
+      &__img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &__map-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: $color-red;
+
+        padding-right: $font-size-medium;
+        padding-bottom: $font-size-medium;
+        font-size: $font-size-medium;
+
+        &:hover {
+          color: darken($color-red, 10);
+        }
+      }
+
+      &__center-name {
+        font-size: $font-size-medium;
+        padding-top: 0;
+        padding-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+.kakao-map {
+  flex: 1;
+  display: none;
+
+  @include mq($bp-large-desktop) {
+    display: block;
+  }
+}

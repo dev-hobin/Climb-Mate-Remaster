@@ -10,6 +10,10 @@
     background-repeat: no-repeat;
     background-size: cover;
   }
+  &--search {
+    margin-top: 4rem;
+    padding: 0;
+  }
 
   &__inner {
     flex: 1;
@@ -25,11 +29,20 @@
         flex-direction: column;
       }
     }
+
+    &--search {
+      display: flex;
+      max-width: none;
+    }
   }
 
   @include mq($bp-phone) {
     &__inner {
       max-width: $bp-landscape-phone;
+
+      &--search {
+        max-width: none;
+      }
     }
   }
 
@@ -46,24 +59,39 @@
           flex: 1;
         }
       }
+      &--search {
+        max-width: none;
+      }
     }
   }
 
   @include mq($bp-tablet) {
     &__inner {
       max-width: $bp-desktop;
+
+      &--search {
+        max-width: none;
+      }
     }
   }
 
   @include mq($bp-desktop) {
     &__inner {
       max-width: $bp-large-desktop;
+
+      &--search {
+        max-width: none;
+      }
     }
   }
 
   @include mq($bp-large-desktop) {
     &__inner {
       max-width: $bp-larger-desktop;
+
+      &--search {
+        max-width: none;
+      }
     }
   }
 }

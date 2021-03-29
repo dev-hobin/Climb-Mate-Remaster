@@ -12,6 +12,8 @@ a {
   color: black;
 }
 body {
+  word-break: break-all;
+
   display: flex;
   flex-direction: column;
   min-height: 100vh;

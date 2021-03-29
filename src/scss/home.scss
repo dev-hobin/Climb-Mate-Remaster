@@ -45,6 +45,13 @@
 
   @include mq($bp-landscape-phone) {
     flex: 1;
+
+    &__contents {
+      align-items: flex-start;
+    }
+    &__title {
+      text-align: left;
+    }
   }
 }
 
