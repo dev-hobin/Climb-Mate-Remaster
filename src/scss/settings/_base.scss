@@ -48,6 +48,12 @@ main {
   justify-content: center;
 }
 
+.flex-between-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .flex-end-container {
   display: flex;
   align-items: center;

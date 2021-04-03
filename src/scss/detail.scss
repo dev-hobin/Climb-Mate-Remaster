@@ -353,6 +353,22 @@
   &__section {
     margin-bottom: 0.5rem;
   }
+  &__goods-modal-btn {
+    color: $color-blue;
+    font-size: $font-size-default;
+    font-weight: 700;
+    background-color: transparent;
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid $color-blue;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+    &:hover {
+      color: $color-white;
+      background-color: $color-blue;
+    }
+  }
 }
 
 .facility-list {
@@ -468,6 +484,38 @@
   }
   &__item-time,
   &__item-comment {
+    color: $color-black;
+    font-weight: 700;
     line-height: 1.6;
+  }
+}
+
+.goods-list {
+  display: flex;
+  flex-direction: column;
+
+  &__item {
+    padding: 1rem 0;
+  }
+  &__item-info-container {
+    display: flex;
+    align-items: center;
+    padding: 0 0 0.5rem 1rem;
+  }
+  &__item-name {
+    font-size: $font-size-medium;
+    font-weight: 700;
+    color: $color-black;
+  }
+  &__line {
+    flex: 1;
+    height: 1px;
+    background: $color-light-gray;
+    margin: 0 1rem;
+  }
+  &__item-price {
+    font-size: $font-size-medium;
+    font-weight: 700;
+    color: $color-black;
   }
 }
