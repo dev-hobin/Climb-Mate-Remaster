@@ -137,7 +137,7 @@
     position: relative;
     width: 100%;
     height: 0;
-    padding-top: 40%;
+    padding-top: 50%;
     border-radius: $border-radius-round;
     overflow: hidden;
     display: flex;
@@ -290,7 +290,7 @@
     margin-right: 1rem;
   }
   &__sticky {
-    flex-basis: 40%;
+    flex-basis: 35%;
   }
 }
 
@@ -344,11 +344,11 @@
 .detail-info-item {
   &__title {
     font-size: $font-size-large;
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
   }
   &__sub-title {
     font-size: $font-size-medium;
-    padding-bottom: 1rem;
+    margin-bottom: 1rem;
   }
   &__section {
     margin-bottom: 0.5rem;
@@ -368,6 +368,15 @@
       color: $color-white;
       background-color: $color-blue;
     }
+  }
+  &__address {
+    padding-bottom: 0.5rem;
+  }
+  &__map {
+    width: 100%;
+    height: 0;
+    padding-top: 50%;
+    background-color: antiquewhite;
   }
 }
 
@@ -488,6 +497,9 @@
     font-weight: 700;
     line-height: 1.6;
   }
+  &__item-comment {
+    white-space: pre-wrap;
+  }
 }
 
 .goods-list {
@@ -517,5 +529,94 @@
     font-size: $font-size-medium;
     font-weight: 700;
     color: $color-black;
+  }
+}
+
+.detail-setting-item {
+  &__title {
+    margin-bottom: 2rem;
+    font-size: $font-size-medium;
+  }
+  &__sub-title {
+    margin-bottom: 0.5rem;
+  }
+  &__setting-description {
+    margin-bottom: 1rem;
+  }
+
+  &__level-modal-btn,
+  &__video-modal-btn {
+    color: $color-blue;
+    font-size: $font-size-default;
+    font-weight: 700;
+    background-color: transparent;
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 2rem;
+    border: 2px solid $color-blue;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+    &:hover {
+      color: $color-white;
+      background-color: $color-blue;
+    }
+  }
+  &__level-modal-btn {
+    margin-right: 0.5rem;
+  }
+}
+
+.detail-setting-gallery {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-size: $font-size-medium;
+    font-weight: 700;
+    color: $color-black;
+    margin-bottom: 1rem;
+  }
+  &__view {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+  }
+  &__figure-container {
+    position: relative;
+    width: calc(33.3% - 1rem);
+    padding-top: 30%;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+  }
+  &__figure {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius-btn);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    overflow: hidden;
+
+    &:hover::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $color-transparent-black;
+      border-radius: $border-radius-rectangle;
+      cursor: pointer;
+    }
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }

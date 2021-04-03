@@ -10,7 +10,7 @@
   </head>
   <body>
     <header class="header">
-      <div class="header__inner">
+      <div class="header__inner header__inner--detail">
         <div class="logo header__logo">
           <a href="http://climbmate.co.kr/" class="logo__link">
             <div class="logo__img-container"></div>
@@ -48,7 +48,7 @@
       </div>
     </header>
     <main class="main">
-      <div class="main__inner">
+      <div class="main__inner main__inner--detail">
         <article class="detail-title-item">
           <h1 class="detail-title-item__title">사과클라이밍</h1>
           <div class="flex-container detail-title-item__info-container">
@@ -290,6 +290,8 @@
               </section>
               <section class="detail-info-item__section">
                 <h3 class="detail-info-item__sub-title">위치</h3>
+                <p class="detail-info-item__address">서울 동작구 사당동</p>
+                <div class="detail-info-item__map"></div>
               </section>
             </article>
 
@@ -298,11 +300,143 @@
             </div>
 
             <article class="detail-setting-item">
-              <h2>세팅</h2>
-              <h3>세팅 비율</h3>
-              <h3>세팅 주기</h3>
-              <h3>볼더링</h3>
-              <h3>지구력</h3>
+              <div class="flex-between-container">
+                <h2 class="detail-setting-item__title">세팅</h2>
+                <div class="flex-center-container">
+                  <button class="detail-setting-item__level-modal-btn">세팅 난이도</button>
+                  <button class="detail-setting-item__video-modal-btn">영상 보러가기</button>
+                </div>
+              </div>
+
+              <h3 class="detail-setting-item__sub-title">세팅 비율</h3>
+              <p class="detail-setting-item__setting-description">
+                볼더링6:지구력4 비율을 가지고 있으며 1층은 볼더링 벽 2층은 지구력 벽 으로 나눠져 있습니다.
+              </p>
+
+              <h3 class="detail-setting-item__sub-title">세팅 주기</h3>
+              <p class="detail-setting-item__setting-description">
+                볼더링벽 세팅주기: 총 4섹터 1주일에 1섹터씩 교체 / 지구력 벽 교체 주기: 지구력 벽 총 3 섹터 2~3달 교체
+              </p>
+
+              <article class="detail-setting-gallery">
+                <h3 class="detail-setting-gallery__title">볼더링</h3>
+                <div class="detail-setting-gallery__view">
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="0">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/7.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="1">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/8.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="2">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/9.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="3">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/10.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="4">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/11.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="5">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/12.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                </div>
+              </article>
+
+              <article class="detail-setting-gallery">
+                <h3 class="detail-setting-gallery__title">지구력</h3>
+                <div class="detail-setting-gallery__view">
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="0">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/7.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="1">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/8.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="2">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/9.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="3">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/10.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="4">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/11.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                  <div class="detail-setting-gallery__figure-container">
+                    <figure class="detail-setting-gallery__figure" data-index="5">
+                      <img
+                        class="detail-setting-gallery__img"
+                        src="https://climbmate.co.kr/resources/center/174/setting/12.jpg"
+                        art="사과클라이밍 세팅 사진"
+                      />
+                    </figure>
+                  </div>
+                </div>
+              </article>
             </article>
           </div>
           <div class="detail-contents__sticky">스티키바</div>

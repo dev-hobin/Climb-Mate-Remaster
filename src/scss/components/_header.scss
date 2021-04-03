@@ -45,12 +45,20 @@
   @include mq($bp-desktop) {
     &__inner {
       max-width: $bp-large-desktop;
+
+      &--detail {
+        max-width: $bp-desktop;
+      }
     }
   }
 
   @include mq($bp-large-desktop) {
     &__inner {
       max-width: $bp-larger-desktop;
+
+      &--detail {
+        max-width: $bp-desktop;
+      }
     }
   }
 }

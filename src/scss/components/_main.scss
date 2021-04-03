@@ -82,6 +82,10 @@
       &--search {
         max-width: none;
       }
+
+      &--detail {
+        max-width: $bp-desktop;
+      }
     }
   }
 
@@ -91,6 +95,10 @@
 
       &--search {
         max-width: none;
+      }
+
+      &--detail {
+        max-width: $bp-desktop;
       }
     }
   }
