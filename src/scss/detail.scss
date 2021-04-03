@@ -297,7 +297,7 @@
 .detail-notice-item {
   &__title {
     font-size: $font-size-large;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
   }
   &__figure {
     display: block;
@@ -338,5 +338,51 @@
       color: $color-white;
       background-color: $color-blue;
     }
+  }
+}
+
+.detail-info-item {
+  &__title {
+    font-size: $font-size-large;
+    padding-bottom: 2rem;
+  }
+  &__sub-title {
+    font-size: $font-size-medium;
+    padding-bottom: 1rem;
+  }
+  &__section {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.facility-list {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 5rem;
+    height: 5rem;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+  }
+  &__item-figure {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+  }
+  &__item-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: $border-radius-rectangle;
+  }
+  &__item-name {
+    font-size: $font-size-default;
+    font-weight: 700;
+    color: $color-black;
   }
 }
