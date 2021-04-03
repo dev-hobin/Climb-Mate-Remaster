@@ -10,6 +10,7 @@ module.exports = {
   entry: {
     home: '/src/js/home',
     search: '/src/js/search',
+    detail: '/src/js/detail',
   },
   module: {
     rules: [
@@ -38,6 +39,11 @@ module.exports = {
       template: paths.src + '/template/search.html',
       filename: 'search.html',
       chunks: ['search'],
+    }),
+    new HtmlWebpackPlugin({
+      template: paths.src + '/template/detail.html',
+      filename: 'detail.html',
+      chunks: ['detail'],
     }),
   ],
 };

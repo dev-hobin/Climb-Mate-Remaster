@@ -5,6 +5,14 @@
   align-items: center;
   justify-content: center;
 
+  &--full {
+    padding: 1rem 0;
+
+    .horizontal-line__line {
+      width: 100%;
+    }
+  }
+
   &__line {
     width: 95%;
     height: 1px;

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail - 클라이메이트</title>
+    <link rel="shortcut icon" href="assets/icon/logo/favicon.ico" type="image/ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__inner">
+        <div class="logo header__logo">
+          <a href="http://climbmate.co.kr/" class="logo__link">
+            <div class="logo__img-container"></div>
+          </a>
+        </div>
+
+        <article class="search header__search">
+          <h2 class="visually-hidden">클라이밍장 검색창</h2>
+          <input type="text" placeholder="클라이밍장 이름, 주소, 지역 등을 입력하세요" class="search__input" />
+          <button class="icon-btn icon-btn-search search__search-btn"></button>
+        </article>
+
+        <nav class="top-menu header__top-menu" data-top-menu>
+          <h2 class="visually-hidden">클라이메이트 메뉴</h2>
+          <button class="top-menu__toggle-btn" data-toggle-btn>
+            <figure class="top-menu__user-figure">
+              <img
+                src="assets/icon/user/user-default.png"
+                alt="유저 기본 이미지"
+                class="top-menu__user-img"
+                data-user-img
+              />
+            </figure>
+            <div class="icon-btn icon-btn-bars top-menu__toggle-btn-icon"></div>
+          </button>
+          <ul class="top-menu__list" data-menu-list>
+            <li class="top-menu__item" data-menu-item="signUp"><button class="top-menu__btn">회원가입</button></li>
+            <li class="top-menu__item" data-menu-item="logIn"><button class="top-menu__btn">로그인</button></li>
+            <li class="top-menu__item" data-menu-item="question"><button class="top-menu__btn">문의하기</button></li>
+            <li class="top-menu__item" data-menu-item="mypage"><a href="#" class="top-menu__link">마이페이지</a></li>
+            <li class="top-menu__item" data-menu-item="follow"><a href="#" class="top-menu__link">팔로우</a></li>
+            <li class="top-menu__item" data-menu-item="logOut"><button class="top-menu__btn">로그아웃</button></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="main">
+      <div class="main__inner">
+        <article class="detail-title-item">
+          <h1 class="detail-title-item__title">사과클라이밍</h1>
+          <div class="flex-container detail-title-item__info-container">
+            <p class="detail-title-item__address">서울 동작구 사당동</p>
+            <button class="detail-title-item__follow-btn">팔로우</button>
+          </div>
+        </article>
+        <article class="detail-center-gallery">
+          <h2 class="visually-hidden">사과클라이밍 소개 이미지 갤러리</h2>
+          <div class="detail-center-gallery__grid-view">
+            <div class="detail-center-gallery__main-container">
+              <figure class="detail-center-gallery__figure" data-index="0">
+                <img
+                  src="https://climbmate.co.kr/resources/center/30/banner/30_1.jpg"
+                  alt="사과클라이밍 이미지"
+                  class="detail-center-gallery__img"
+                />
+              </figure>
+            </div>
+            <div class="detail-center-gallery__sub-conainer">
+              <div class="detail-center-gallery__sub-top-container">
+                <div class="detail-center-gallery__sub-top-left-container">
+                  <figure class="detail-center-gallery__figure" data-index="1">
+                    <img
+                      src="https://climbmate.co.kr/resources/center/30/banner/30_2.jpg"
+                      alt="사과클라이밍 이미지"
+                      class="detail-center-gallery__img"
+                    />
+                  </figure>
+                </div>
+                <div class="detail-center-gallery__sub-top-right-container">
+                  <figure class="detail-center-gallery__figure" data-index="2">
+                    <img
+                      src="https://climbmate.co.kr/resources/center/30/banner/30_3.jpg"
+                      alt="사과클라이밍 이미지"
+                      class="detail-center-gallery__img"
+                    />
+                  </figure>
+                </div>
+              </div>
+              <div class="detail-center-gallery__sub-bottom-container">
+                <div class="detail-center-gallery__sub-bottom-left-container">
+                  <figure class="detail-center-gallery__figure" data-index="3">
+                    <img
+                      src="https://climbmate.co.kr/resources/center/30/banner/30_4.jpg"
+                      alt="사과클라이밍 이미지"
+                      class="detail-center-gallery__img"
+                    />
+                  </figure>
+                </div>
+                <div class="detail-center-gallery__sub-bottom-right-container">
+                  <figure class="detail-center-gallery__figure" data-index="4">
+                    <img
+                      src="https://climbmate.co.kr/resources/center/30/banner/30_5.jpg"
+                      alt="사과클라이밍 이미지"
+                      class="detail-center-gallery__img"
+                    />
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <button class="detail-center-gallery__show-all-btn">사진 전체보기</button>
+          </div>
+        </article>
+
+        <div class="horizontal-line horizontal-line--full">
+          <div class="horizontal-line__line"></div>
+        </div>
+        <div class="detail-contents">
+          <div class="detail-contents__main">
+            <article class="detail-notice-item">
+              <h2 class="detail-notice-item__title">공지사항</h2>
+              <figure class="detail-notice-item__figure">
+                <img
+                  src="https://climbmate.co.kr/resources/1.jpg"
+                  alt="사과클라이밍 공지사항 이미지"
+                  class="detail-notice-item__img"
+                />
+              </figure>
+              <div class="detail-notice-item__notice-body">
+                <span class="detail-notice-item__notice-created"> 2021-01-15 02:08:06 </span>
+                <h3 class="detail-notice-item__notice-title">2021년 첫 세팅 완료!</h3>
+                <p class="detail-notice-item__notice-body">2021년 첫 세팅이 완료되었습니다 와서 즐기세요!</p>
+                <div class="flex-end-container">
+                  <a
+                    class="detail-notice-item__link"
+                    href="https://www.instagram.com/p/CHF08H5DeUP/?utm_source=ig_web_copy_link"
+                    target="_blank"
+                    >자세히 보기</a
+                  >
+                </div>
+              </div>
+            </article>
+
+            <div class="horizontal-line horizontal-line--full">
+              <div class="horizontal-line__line"></div>
+            </div>
+
+            <article class="detail-info-item">
+              <h2>정보</h2>
+              <h3>시설</h3>
+              <h3>도구</h3>
+              <h3>소셜</h3>
+              <h3>운영시간</h3>
+              <h3>가격</h3>
+              <h3>위치</h3>
+            </article>
+
+            <div class="horizontal-line horizontal-line--full">
+              <div class="horizontal-line__line"></div>
+            </div>
+
+            <article class="detail-setting-item">
+              <h2>세팅</h2>
+              <h3>세팅 비율</h3>
+              <h3>세팅 주기</h3>
+              <h3>볼더링</h3>
+              <h3>지구력</h3>
+            </article>
+          </div>
+          <div class="detail-contents__sticky">스티키바</div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="footer__inner">
+        <p class="footer__contents">
+          &copy; 2020 Climb:Mate. All rights reserved ·
+          <a href="#" class="footer__policy-link">개인정보 처리방침</a>
+          ·
+          <a href="#" class="footer__policy-link">이용약관</a>
+          ·
+          <a href="#" class="footer__policy-link">오픈소스 라이센스</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
