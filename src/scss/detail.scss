@@ -291,6 +291,10 @@
   }
   &__sticky {
     flex-basis: 35%;
+    position: relative;
+    border-left: 1px solid $color-light-gray;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
   }
 }
 
@@ -542,6 +546,7 @@
   }
   &__setting-description {
     margin-bottom: 1rem;
+    line-height: 1.6;
   }
 
   &__level-modal-btn,
@@ -618,5 +623,62 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  &__more-btn {
+    color: #1d6bb4;
+    font-size: 1rem;
+    font-weight: 700;
+    background-color: transparent;
+    padding: 0.2rem 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #1d6bb4;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 300ms ease;
+    &:hover {
+      color: $color-white;
+      background-color: $color-blue;
+    }
+  }
+}
+
+.detail-sticky-bar {
+  position: sticky;
+  top: 1rem;
+  background-color: $color-white;
+  border: 2px solid $color-gray;
+  padding: 1rem;
+
+  &__header {
+    text-align: center;
+  }
+  &__center-name {
+    font-size: $font-size-medium;
+    font-weight: 700;
+  }
+  &__body {
+    font-size: $font-size-default;
+    white-space: pre-wrap;
+    min-height: 10vh;
+    max-height: 30vh;
+    overflow-y: auto;
+    line-height: 1.6;
+  }
+  &__call-btn {
+    font-size: $font-size-default;
+    font-weight: 700;
+    color: $color-white;
+    background-color: $color-red;
+    width: 100%;
+    padding: 0.5rem 0;
+    text-align: center;
+    border: none;
+    border-radius: $border-radius-rectangle;
+    cursor: pointer;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: darken($color-red, 5);
+    }
   }
 }

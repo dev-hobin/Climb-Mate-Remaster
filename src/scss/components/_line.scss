@@ -17,6 +17,10 @@
     width: 95%;
     height: 1px;
     border-top: 0.5px solid $color-light-gray;
+
+    &--bold {
+      border-top: 2px solid $color-gray;
+    }
   }
 
   &__text {
